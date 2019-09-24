@@ -70,7 +70,7 @@ final class CoreManager {
             
             guard let core = trackResult.first else { return }
             context.delete(core)
-            print("Deleted Track From Core: \(track.id)")
+            print("Deleted Track From Core: \(String(describing: track.id))")
             
         } catch {
             print("Couldn't Fetch Fact: \(error.localizedDescription)")

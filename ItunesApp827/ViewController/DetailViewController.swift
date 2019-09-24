@@ -12,6 +12,8 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailTableView: UITableView!
     
+    @IBOutlet weak var playlist: UIButton!
+    
     var viewModel: ViewModel!
     var audioPlayer: AVAudioPlayer!
     var previousSelected: Int? //optional - could be nil
@@ -23,14 +25,27 @@ class DetailViewController: UIViewController {
     
     @IBAction func addToPlaylistButton(_ sender: UIButton) {
         let track = viewModel.tracks[sender.tag]
+        print(sender.tag)
+        
+        // display the alert
+        if !viewModel.isInPlaylist(track: track){
         let alert = UIAlertController(title: "Add To Playlist", message: "You have just added the song \"\(track.name!)\" to the playlist", preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         alert.addAction(okayAction)
-        present(alert, animated: true, completion: nil)
-        if !viewModel.isInPlaylist(track: track){
+            present(alert, animated: true, completion: nil)
             viewModel.add(track: track)
-            print(CoreManager.shared.load().count)
+        } else {
+            let alert2 = UIAlertController(title: "Add To Playlist", message: "Sorry!!! This song is already in the playlist", preferredStyle: .alert)
+            let okayAction2 = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+            alert2.addAction(okayAction2)
+               present(alert2, animated: true, completion: nil)
         }
+        
+//        // add the track to the playlist if it is not in the playlist
+//        if !viewModel.isInPlaylist(track: track){
+//            viewModel.add(track: track)
+//            print(CoreManager.shared.load().count)
+//        }
     }
     
     @IBAction func priceButtonTapped(_ sender: UIButton) {
@@ -42,7 +57,7 @@ class DetailViewController: UIViewController {
     @objc func previewButtonTapped(sender: UIButton) {
         
         let track = viewModel.tracks[sender.tag]
-        
+        print(sender.tag)
         //check if its the fist time we tapped the play button - check if same button is tapped twice
         if previousSelected != nil && sender.tag != previousSelected {
             detailTableView.reloadRows(at: [IndexPath(row: previousSelected!, section: 1)], with: .top)
@@ -113,6 +128,7 @@ extension DetailViewController: UITableViewDataSource {
             cell.track = track
             
             cell.trackPreviewButton.tag = indexPath.row
+            cell.addPlaylistButton.tag = indexPath.row
             cell.trackPreviewButton.addTarget(self, action: #selector(previewButtonTapped(sender:)), for: .touchUpInside)
             
             
@@ -131,8 +147,10 @@ extension DetailViewController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
         tableView.deselectRow(at: indexPath, animated: true)
+        print("Selected row: " + String(indexPath.row))
     }
 }
 

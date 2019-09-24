@@ -12,7 +12,8 @@ class PlaylistTableCell: UITableViewCell {
 
 
     @IBOutlet weak var trackTitle: UILabel!
-    
+
+    @IBOutlet weak var removeButton: UIButton!
     
     static let identifier = "PlaylistTableCell"
     

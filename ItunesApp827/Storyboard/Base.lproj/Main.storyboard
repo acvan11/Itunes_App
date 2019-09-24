@@ -206,6 +206,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addPlaylistButton" destination="X87-Ep-3ms" id="Xhk-RS-pQU"/>
                                             <outlet property="trackDuration" destination="OQr-pq-pnM" id="TW5-3r-OGr"/>
                                             <outlet property="trackName" destination="hAf-Dm-yG6" id="fr8-3t-Xu2"/>
                                             <outlet property="trackPreviewButton" destination="xvY-mr-FEr" id="mXa-MC-PAD"/>
@@ -433,24 +434,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQo-So-8Jg">
-                                                    <rect key="frame" x="15" y="50" width="68" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSC-eY-F29">
+                                                    <rect key="frame" x="20" y="44.5" width="55" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Zyc-Aj-bvh"/>
+                                                    </constraints>
                                                     <state key="normal" title="Remove"/>
                                                     <connections>
-                                                        <action selector="removeButtonTapped:" destination="CHd-A6-rqq" eventType="touchUpInside" id="Rwq-Jl-V5W"/>
+                                                        <action selector="removeButton:" destination="CHd-A6-rqq" eventType="touchUpInside" id="JLe-9e-hzO"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="OQo-So-8Jg" secondAttribute="trailing" constant="292" id="0y4-Yf-x2Z"/>
+                                                <constraint firstItem="TSC-eY-F29" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oVD-e6-A1g" secondAttribute="bottom" constant="23.5" id="4Kj-iw-NEa"/>
                                                 <constraint firstItem="oVD-e6-A1g" firstAttribute="top" secondItem="9aU-zX-up7" secondAttribute="top" id="60S-S3-w5H"/>
-                                                <constraint firstItem="OQo-So-8Jg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9aU-zX-up7" secondAttribute="leading" constant="20" symbolic="YES" id="WKO-NM-Kfu"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TSC-eY-F29" secondAttribute="trailing" constant="285" id="8sv-iN-hB6"/>
+                                                <constraint firstItem="TSC-eY-F29" firstAttribute="leading" secondItem="9aU-zX-up7" secondAttribute="leading" constant="20" symbolic="YES" id="9ph-m7-Dhh"/>
                                                 <constraint firstAttribute="trailing" secondItem="oVD-e6-A1g" secondAttribute="trailing" constant="10" id="X5i-0e-D20"/>
                                                 <constraint firstItem="oVD-e6-A1g" firstAttribute="leading" secondItem="9aU-zX-up7" secondAttribute="leading" constant="10" id="gDE-24-7nm"/>
-                                                <constraint firstAttribute="bottom" secondItem="OQo-So-8Jg" secondAttribute="bottom" id="tMx-5i-sXq"/>
+                                                <constraint firstAttribute="bottom" secondItem="TSC-eY-F29" secondAttribute="bottom" constant="5" id="oKf-oJ-w6c"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="removeButton" destination="TSC-eY-F29" id="p4i-vw-azN"/>
                                             <outlet property="trackTitle" destination="oVD-e6-A1g" id="Plu-k5-U5N"/>
                                         </connections>
                                     </tableViewCell>

@@ -15,6 +15,8 @@ class TrackTableCellTwo: UITableViewCell {
     @IBOutlet weak var trackPrice: UILabel!
     @IBOutlet weak var trackPreviewButton: UIButton!
     
+    @IBOutlet weak var addPlaylistButton: UIButton!
+    @IBOutlet weak var playlist: UIButton!
     static let identifier = "TrackTableCellTwo"
     
     var track: Track! {

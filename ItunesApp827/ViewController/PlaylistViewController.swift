@@ -12,6 +12,7 @@ class PlaylistViewController: UIViewController {
 
     @IBOutlet weak var playlistTableView: UITableView!
     
+    
     var viewModel : ViewModel!
     
     override func viewDidLoad() {
@@ -24,14 +25,14 @@ class PlaylistViewController: UIViewController {
         viewModel.getPlaylist()
     }
     
-    
-    @IBAction func removeButtonTapped(_ sender: UIButton) {
-         let track = viewModel.tracks[sender.tag]
-        viewModel.delete(track: track)
-     
-
+    @IBAction func removeButton(_ sender: UIButton) {
+                print(sender.tag)
+                let track = viewModel.tracks[sender.tag]
+                print(track.name)
+                viewModel.delete(track: track)
     }
     
+
     private func setupPlaylist() {
         //you must register XIB to table view
 //        playlistTableView.register(UINib(nibName: TrackTableCellTwo.identifier, bundle: Bundle.main), forCellReuseIdentifier: TrackTableCellTwo.identifier)
@@ -54,6 +55,7 @@ extension PlaylistViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableCell.identifier, for: indexPath) as! PlaylistTableCell
         let track = viewModel.playlist[indexPath.row]
         cell.track = track
+        cell.removeButton.tag = indexPath.row
         
 //        cell.trackPreviewButton.tag = indexPath.row
 //        cell.trackPreviewButton.addTarget(self, action: #selector(previewButtonTapped(sender:)), for: .touchUpInside)
