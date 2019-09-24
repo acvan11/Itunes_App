@@ -58,9 +58,10 @@ final class CoreManager {
     
     //MARK: Delete
     func delete(_ track: Track) {
-        
+    
         let fetchRequest = NSFetchRequest<CoreTrack>(entityName: "CoreTrack")
         let predicate = NSPredicate(format: "id==%@", track.id)
+        print("delete line 3")
         fetchRequest.predicate = predicate
         
         var trackResult = [CoreTrack]()
@@ -70,7 +71,7 @@ final class CoreManager {
             
             guard let core = trackResult.first else { return }
             context.delete(core)
-            print("Deleted Track From Core: \(String(describing: track.id))")
+            print("Deleted Track From Core: )")
             
         } catch {
             print("Couldn't Fetch Fact: \(error.localizedDescription)")

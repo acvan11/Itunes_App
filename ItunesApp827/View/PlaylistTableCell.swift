@@ -12,14 +12,19 @@ class PlaylistTableCell: UITableViewCell {
 
 
     @IBOutlet weak var trackTitle: UILabel!
+    @IBOutlet weak var duration: UILabel!
+    @IBOutlet weak var priceLable: UILabel!
 
-    @IBOutlet weak var removeButton: UIButton!
     
     static let identifier = "PlaylistTableCell"
     
     var track: Track! {
         didSet {
+            duration.text = track.duration!.toMinutes
+            priceLable.text = "$" + String(track.price!)
             trackTitle.text = track.name
+            
         }
     }
+
 }

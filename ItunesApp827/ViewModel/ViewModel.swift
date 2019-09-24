@@ -37,6 +37,8 @@ class ViewModel {
         }
     }
     
+    var track: Track!
+    
     var playlist = [Track]() {
         didSet {
             playlistDelegate?.update()
@@ -71,7 +73,7 @@ class ViewModel {
         }
     }
     
-    var track: Track!
+
     
     var currentAlbum: Album! {
         didSet {
